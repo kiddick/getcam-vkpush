@@ -1,3 +1,10 @@
 dataclasses_json
 fastapi
 uvicorn
+aiohttp
+loguru
+# TODO
+git+https://github.com/kiddick/orm.git
+asyncpg
+psycopg2
+databases[postgresql]

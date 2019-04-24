@@ -1,6 +1,12 @@
-from typing import Dict, List, Optional
+from typing import Optional
 
-test: str
+access_token: str
+api_version: str
+public: int
+log_file: str
+db_uri: str
+stdout_log: Optional[bool] = True
+root_dir: Optional[str] = None
 
 
 def read():
