@@ -8,3 +8,4 @@ git+https://github.com/kiddick/orm.git
 asyncpg
 psycopg2
 databases[postgresql]
+alembic
