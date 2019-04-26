@@ -66,7 +66,7 @@ class PostManager:
             **self.payload,
             'owner_id': f'-{item.page_id}',
             'from_group': 1,
-            'message': item.name,
+            'message': item.description,
             'attachments': f'video-{item.page_id}_{item.media_id}'
         }
         response = await self.post(url, data=params)

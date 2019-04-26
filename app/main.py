@@ -83,7 +83,9 @@ async def startup_event():
 async def upload_item(item: Video):
     logger.info('uploading item..')
     channel = await Channel.objects.filter(cam=item.cam).all()
-    if len(channel) != 1:
+    if len(channel) < 1:
+        raise HTTPException(status_code=404, detail='Cam not found')
+    if len(channel) > 1:
         raise HTTPException(status_code=409, detail='There are several channels with same cam name')
     channel = channel[0]
     item = UploadItem(Path(item.path), channel.group_id, item.name, item.description)
