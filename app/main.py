@@ -43,6 +43,7 @@ app = FastAPI()
 class Video(BaseModel):
     cam: str
     path: str
+    name: str
     description: str
 
 
@@ -85,7 +86,7 @@ async def upload_item(item: Video):
     if len(channel) != 1:
         raise HTTPException(status_code=409, detail='There are several channels with same cam name')
     channel = channel[0]
-    item = UploadItem(Path(item.path), channel.group_id, item.description)
+    item = UploadItem(Path(item.path), channel.group_id, item.name, item.description)
     try:
         response = await manager.upload_item(item)
     except Exception:

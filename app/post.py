@@ -13,6 +13,7 @@ class UploadItem:
     path: Path
     page_id: int
     name: str
+    description: str
     upload_url = Optional[str]
     media_id = Optional[str]
 
@@ -65,7 +66,7 @@ class PostManager:
             **self.payload,
             'owner_id': f'-{item.page_id}',
             'from_group': 1,
-            'message': 'text',
+            'message': item.name,
             'attachments': f'video-{item.page_id}_{item.media_id}'
         }
         response = await self.post(url, data=params)
